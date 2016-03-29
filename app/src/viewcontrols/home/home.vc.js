@@ -15,6 +15,8 @@ var HomeViewControl = (function (_super) {
         this.templateString = require('./home.vc.html');
         this.context = {
             entries: [],
+            success: [],
+            data: {}
         };
     }
     HomeViewControl.prototype.navigatedTo = function () {

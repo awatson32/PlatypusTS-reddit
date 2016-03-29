@@ -14,9 +14,9 @@ var EntryService = (function (_super) {
     EntryService.prototype.getRedditList = function () {
         return this.http.json({
             method: 'GET',
-            url: this.host
+            url: this.host + 'Showerthoughts.json'
         }).then(function (success) {
-            return success.response;
+            return success.response.data.children;
         }, function (err) {
             console.log(err);
             throw err;

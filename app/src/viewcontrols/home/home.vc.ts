@@ -6,8 +6,10 @@ import EntryRepository from '../../repositories/entry/entry.repo';
 export default class HomeViewControl extends BaseViewControl {
     templateString: string = require('./home.vc.html');
 
-    context = {
+    context: any = {
         entries: <Array<models.IEntry>>[],
+        success: [],
+        data: {}
     };
     
     constructor(private entryRepo: EntryRepository) {

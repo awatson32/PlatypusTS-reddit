@@ -5,11 +5,11 @@ import BaseService from '../base/base.svc';
 export default class EntryService extends BaseService {
     
     getRedditList(): async.IAjaxThenable<Array<models.IEntry>> {
-        return this.http.json<Array<models.IEntry>>({
+        return this.http.json<any>({
             method: 'GET',
-            url: this.host
+            url: this.host + 'Showerthoughts.json'
         }).then((success) => {
-            return success.response;
+            return success.response.data.children;
         }, (err) => {
             console.log(err);
             throw err;

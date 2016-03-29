@@ -14,7 +14,19 @@ var EntryRepository = (function (_super) {
         this.entrySvc = entrySvc;
     }
     EntryRepository.prototype.getRedditList = function () {
-        return this.entrySvc.getRedditList();
+        var entryArray = [];
+        return this.entrySvc.getRedditList().then(function (success) {
+            for (var i = 0; i < success.length; i++) {
+                var entry = {
+                    "title": success[i].data.title,
+                    "author": success[i].data.author,
+                    "id": success[i].data.id,
+                    "thumbnail": success[i].data.thumbnail
+                };
+                entryArray.push(entry);
+            }
+            return entryArray;
+        });
     };
     return EntryRepository;
 }(base_repo_1.default));

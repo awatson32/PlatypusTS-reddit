@@ -2,7 +2,7 @@
 var platypus_1 = require('platypus');
 var BaseService = (function () {
     function BaseService() {
-        this.host = 'https://www.reddit.com/r/Showerthoughts.json';
+        this.host = 'https://www.reddit.com/r/';
     }
     BaseService._inject = {
         http: platypus_1.async.Http,

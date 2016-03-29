@@ -9,8 +9,20 @@ export default class EntryRepository extends BaseRepository {
     }
     
     getRedditList(): async.IThenable<Array<models.IEntry>> {
-        let f = [];
-        return this.entrySvc.getRedditList();
+        let entryArray: Array<any> = [];
+        return this.entrySvc.getRedditList().then((success) => {
+            for(let i = 0; i < success.length; i++) {
+                let entry = {
+                    "title": success[i].data.title,
+                    "author": success[i].data.author,
+                    "id": success[i].data.id,
+                    "thumbnail": success[i].data.thumbnail
+                };
+                entryArray.push(entry);    
+                }
+                return entryArray;
+        });
+
     }
 }
 
